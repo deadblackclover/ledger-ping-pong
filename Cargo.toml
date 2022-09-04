@@ -1,0 +1,27 @@
+[package]
+name = "ledger-game"
+version = "0.1.0"
+authors = ["DEADBLACKCLOVER <deadblackclover@protonmail.com>"]
+description = "Demo game for Ledger Nano"
+edition = "2018"
+license = "GPL-3.0"
+readme = "README.md"
+homepage = "https://github.com/deadblackclover/ledger-game"
+repository = "https://github.com/deadblackclover/ledger-game"
+
+[dependencies]
+nanos_sdk = { git = "https://github.com/LedgerHQ/ledger-nanos-sdk.git" } 
+nanos_ui = { git = "https://github.com/LedgerHQ/ledger-nanos-ui.git" } 
+
+[profile.dev]
+panic = "abort"
+
+[profile.release]
+panic = "abort"
+opt-level = 'z' 
+lto = true
+
+[package.metadata.nanos]
+curve = "secp256k1"
+flags = "0"
+icon = "crab.gif"
