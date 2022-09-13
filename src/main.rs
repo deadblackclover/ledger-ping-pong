@@ -1,6 +1,10 @@
 #![no_std]
 #![no_main]
 
+mod game;
+mod paddle;
+
+use game::Game;
 use nanos_sdk::buttons::ButtonEvent;
 use nanos_sdk::io;
 use nanos_ui::ui;
@@ -30,11 +34,7 @@ fn menu() {
 
 /// Start game
 fn game() {
-    if ui::Validator::new("Start ?").ask() {
-        ui::popup("Start !");
-    } else {
-        ui::popup("Cancelled");
-    }
+    Game::new().event_loop();
 }
 
 #[no_mangle]
