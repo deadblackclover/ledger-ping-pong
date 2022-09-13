@@ -10,15 +10,15 @@ homepage = "https://github.com/deadblackclover/ledger-game"
 repository = "https://github.com/deadblackclover/ledger-game"
 
 [dependencies]
-nanos_sdk = { git = "https://github.com/LedgerHQ/ledger-nanos-sdk.git" } 
-nanos_ui = { git = "https://github.com/LedgerHQ/ledger-nanos-ui.git" } 
+nanos_sdk = { git = "https://github.com/LedgerHQ/ledger-nanos-sdk.git" }
+nanos_ui = { git = "https://github.com/LedgerHQ/ledger-nanos-ui.git" }
 
 [profile.dev]
 panic = "abort"
 
 [profile.release]
 panic = "abort"
-opt-level = 'z' 
+opt-level = 'z'
 lto = true
 
 [package.metadata.nanos]
