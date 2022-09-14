@@ -1,6 +1,7 @@
 #![no_std]
 #![no_main]
 
+mod ball;
 mod game;
 mod paddle;
 
