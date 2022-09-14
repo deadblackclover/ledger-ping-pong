@@ -5,27 +5,38 @@ pub struct Paddle {
     y: i16,
     width: u16,
     height: u16,
+    speed: i16,
 }
 
 impl Paddle {
-    pub fn new(x: i16, y: i16) -> Self {
+    pub fn new(x: i16, y: i16, speed: i16) -> Self {
         Paddle {
             x,
             y,
             width: 15,
             height: 3,
+            speed,
         }
+    }
+
+    pub fn get_coordinates(&self) -> (i16, i16, i16, i16) {
+        (
+            self.x,
+            self.y,
+            self.x + (self.width as i16),
+            self.y + (self.height as i16),
+        )
     }
 
     pub fn left(&mut self) {
         if self.x > 0 {
-            self.x -= 1;
+            self.x -= self.speed;
         }
     }
 
     pub fn right(&mut self) {
-        if self.x < 128 - self.width as i16 {
-            self.x += 1;
+        if self.x + (self.width as i16) < 128 {
+            self.x += self.speed;
         }
     }
 
