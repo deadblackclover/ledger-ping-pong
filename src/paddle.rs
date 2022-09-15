@@ -1,5 +1,7 @@
 use nanos_ui::bagls::{Displayable, Rect};
 
+use crate::ball::Ball;
+
 pub struct Paddle {
     x: i16,
     y: i16,
@@ -37,6 +39,21 @@ impl Paddle {
     pub fn right(&mut self) {
         if self.x + (self.width as i16) < 128 {
             self.x += self.speed;
+        }
+    }
+
+    pub fn kick(&mut self, ball: &mut Ball) {
+        let (b_x, b_y, b_x1, b_y1) = ball.get_coordinates();
+        let (x, y, x1, y1) = self.get_coordinates();
+
+        if b_x1 > x && b_x < x1 {
+            if b_y1 >= y && b_y1 - y <= 1 {
+                ball.rebound(-1);
+            }
+
+            if b_y <= y1 && y1 - b_y <= 1 {
+                ball.rebound(1);
+            }
         }
     }
 

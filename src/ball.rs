@@ -1,7 +1,5 @@
 use nanos_ui::bagls::{Displayable, Rect};
 
-use crate::paddle::Paddle;
-
 pub struct Ball {
     x: i16,
     y: i16,
@@ -23,6 +21,21 @@ impl Ball {
         }
     }
 
+    pub fn get_coordinates(&self) -> (i16, i16, i16, i16) {
+        (
+            self.x,
+            self.y,
+            self.x + (self.width as i16),
+            self.y + (self.height as i16),
+        )
+    }
+
+    pub fn rebound(&mut self, dy: i16) {
+        if dy == -1 || dy == 1 {
+            self.dy = dy;
+        }
+    }
+
     pub fn update(&mut self) {
         self.x += self.dx;
         self.y += self.dy;
@@ -34,14 +47,18 @@ impl Ball {
         if self.x < self.width as i16 {
             self.dx = 1;
         }
+    }
 
+    pub fn is_game_over(&self) -> bool {
         if self.y + self.height as i16 > 32 {
-            self.dy = -1;
+            return true;
         }
 
         if self.y < self.height as i16 {
-            self.dy = 1;
+            return true;
         }
+
+        false
     }
 
     pub fn paint(&self) {
