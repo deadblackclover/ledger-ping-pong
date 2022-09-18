@@ -36,6 +36,7 @@ fn menu() {
 /// Start game
 fn game() {
     Game::new().event_loop();
+    ui::popup("GAME OVER");
 }
 
 #[no_mangle]

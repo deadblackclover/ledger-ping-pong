@@ -37,7 +37,7 @@ impl Paddle {
     }
 
     pub fn right(&mut self) {
-        if self.x + (self.width as i16) < 128 {
+        if self.x + (self.width as i16) <= 124 {
             self.x += self.speed;
         }
     }

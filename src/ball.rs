@@ -40,11 +40,11 @@ impl Ball {
         self.x += self.dx;
         self.y += self.dy;
 
-        if self.x + self.width as i16 > 128 {
+        if self.x + self.width as i16 > 124 {
             self.dx = -1;
         }
 
-        if self.x < self.width as i16 {
+        if self.x <= 0 {
             self.dx = 1;
         }
     }
@@ -54,7 +54,7 @@ impl Ball {
             return true;
         }
 
-        if self.y < self.height as i16 {
+        if self.y <= 0 {
             return true;
         }
 
