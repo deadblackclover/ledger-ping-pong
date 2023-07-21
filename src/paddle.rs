@@ -1,4 +1,7 @@
-use nanos_ui::bagls::{Displayable, Rect};
+use nanos_ui::{
+    bagls::{RectFull, SendToDisplay},
+    PADDING, SCREEN_WIDTH,
+};
 
 use crate::ball::Ball;
 
@@ -37,7 +40,7 @@ impl Paddle {
     }
 
     pub fn right(&mut self) {
-        if self.x + (self.width as i16) <= 124 {
+        if self.x + (self.width as i16) <= (SCREEN_WIDTH - PADDING * 2) as i16 {
             self.x += self.speed;
         }
     }
@@ -58,11 +61,10 @@ impl Paddle {
     }
 
     pub fn paint(&self) {
-        Rect::new()
-            .dims(self.width, self.height)
-            .colors(0, 0x41ccb4u32)
-            .fill(false)
-            .pos(self.x, self.y)
+        RectFull::new()
+            .width(self.width as u32)
+            .height(self.height as u32)
+            .pos(self.x as i32, self.y as i32)
             .paint();
     }
 }

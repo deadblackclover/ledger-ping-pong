@@ -67,9 +67,9 @@ enum Ins {
     Exit,
 }
 
-impl From<u8> for Ins {
-    fn from(ins: u8) -> Ins {
-        match ins {
+impl From<io::ApduHeader> for Ins {
+    fn from(header: io::ApduHeader) -> Ins {
+        match header.ins {
             3 => Ins::Game,
             4 => Ins::Menu,
             0xff => Ins::Exit,

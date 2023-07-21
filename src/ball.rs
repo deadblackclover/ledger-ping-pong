@@ -1,4 +1,7 @@
-use nanos_ui::bagls::{Displayable, Rect};
+use nanos_ui::{
+    bagls::{RectFull, SendToDisplay},
+    PADDING, SCREEN_HEIGHT, SCREEN_WIDTH,
+};
 
 pub struct Ball {
     x: i16,
@@ -40,7 +43,7 @@ impl Ball {
         self.x += self.dx;
         self.y += self.dy;
 
-        if self.x + self.width as i16 > 124 {
+        if self.x + self.width as i16 > (SCREEN_WIDTH - PADDING * 2) as i16 {
             self.dx = -1;
         }
 
@@ -50,7 +53,7 @@ impl Ball {
     }
 
     pub fn is_game_over(&self) -> bool {
-        if self.y + self.height as i16 > 32 {
+        if self.y + self.height as i16 > SCREEN_HEIGHT as i16 {
             return true;
         }
 
@@ -62,11 +65,10 @@ impl Ball {
     }
 
     pub fn paint(&self) {
-        Rect::new()
-            .dims(self.width, self.height)
-            .colors(0, 0x41ccb4u32)
-            .fill(false)
-            .pos(self.x, self.y)
+        RectFull::new()
+            .width(self.width as u32)
+            .height(self.height as u32)
+            .pos(self.x as i32, self.y as i32)
             .paint();
     }
 }
