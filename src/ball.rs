@@ -4,16 +4,16 @@ use nanos_ui::{
 };
 
 pub struct Ball {
-    x: i16,
-    y: i16,
-    dx: i16,
-    dy: i16,
-    width: u16,
-    height: u16,
+    x: i32,
+    y: i32,
+    dx: i32,
+    dy: i32,
+    width: u32,
+    height: u32,
 }
 
 impl Ball {
-    pub fn new(x: i16, y: i16) -> Self {
+    pub fn new(x: i32, y: i32) -> Self {
         Ball {
             x,
             y,
@@ -24,16 +24,16 @@ impl Ball {
         }
     }
 
-    pub fn get_coordinates(&self) -> (i16, i16, i16, i16) {
+    pub fn get_coordinates(&self) -> (i32, i32, i32, i32) {
         (
             self.x,
             self.y,
-            self.x + (self.width as i16),
-            self.y + (self.height as i16),
+            self.x + (self.width as i32),
+            self.y + (self.height as i32),
         )
     }
 
-    pub fn rebound(&mut self, dy: i16) {
+    pub fn rebound(&mut self, dy: i32) {
         if dy == -1 || dy == 1 {
             self.dy = dy;
         }
@@ -43,7 +43,7 @@ impl Ball {
         self.x += self.dx;
         self.y += self.dy;
 
-        if self.x + self.width as i16 > (SCREEN_WIDTH - PADDING * 2) as i16 {
+        if self.x + self.width as i32 > (SCREEN_WIDTH - PADDING * 2) as i32 {
             self.dx = -1;
         }
 
@@ -53,7 +53,7 @@ impl Ball {
     }
 
     pub fn is_game_over(&self) -> bool {
-        if self.y + self.height as i16 > SCREEN_HEIGHT as i16 {
+        if self.y + self.height as i32 > SCREEN_HEIGHT as i32 {
             return true;
         }
 
@@ -66,9 +66,9 @@ impl Ball {
 
     pub fn paint(&self) {
         RectFull::new()
-            .width(self.width as u32)
-            .height(self.height as u32)
-            .pos(self.x as i32, self.y as i32)
+            .width(self.width)
+            .height(self.height)
+            .pos(self.x, self.y)
             .paint();
     }
 }

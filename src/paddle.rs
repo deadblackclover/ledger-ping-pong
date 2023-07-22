@@ -6,15 +6,15 @@ use nanos_ui::{
 use crate::ball::Ball;
 
 pub struct Paddle {
-    x: i16,
-    y: i16,
-    width: u16,
-    height: u16,
-    speed: i16,
+    x: i32,
+    y: i32,
+    width: u32,
+    height: u32,
+    speed: i32,
 }
 
 impl Paddle {
-    pub fn new(x: i16, y: i16, speed: i16) -> Self {
+    pub fn new(x: i32, y: i32, speed: i32) -> Self {
         Paddle {
             x,
             y,
@@ -24,12 +24,12 @@ impl Paddle {
         }
     }
 
-    pub fn get_coordinates(&self) -> (i16, i16, i16, i16) {
+    pub fn get_coordinates(&self) -> (i32, i32, i32, i32) {
         (
             self.x,
             self.y,
-            self.x + (self.width as i16),
-            self.y + (self.height as i16),
+            self.x + (self.width as i32),
+            self.y + (self.height as i32),
         )
     }
 
@@ -40,7 +40,7 @@ impl Paddle {
     }
 
     pub fn right(&mut self) {
-        if self.x + (self.width as i16) <= (SCREEN_WIDTH - PADDING * 2) as i16 {
+        if self.x + (self.width as i32) <= (SCREEN_WIDTH - PADDING * 2) as i32 {
             self.x += self.speed;
         }
     }
@@ -62,9 +62,9 @@ impl Paddle {
 
     pub fn paint(&self) {
         RectFull::new()
-            .width(self.width as u32)
-            .height(self.height as u32)
-            .pos(self.x as i32, self.y as i32)
+            .width(self.width)
+            .height(self.height)
+            .pos(self.x, self.y)
             .paint();
     }
 }
