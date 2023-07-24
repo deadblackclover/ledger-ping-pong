@@ -1,6 +1,6 @@
 use nanos_sdk::buttons::{ButtonEvent, ButtonsState};
-use nanos_ui::bagls::*;
 use nanos_ui::ui;
+use nanos_ui::{bagls::*, PADDING, SCREEN_HEIGHT, SCREEN_WIDTH};
 
 use crate::ball::Ball;
 use crate::paddle::Paddle;
@@ -20,9 +20,16 @@ pub struct Game {
 impl Game {
     pub fn new() -> Self {
         Game {
-            player: Paddle::new(64, 26, 4),
-            opponent: Paddle::new(64, 0, 4),
-            ball: Ball::new(64, 14),
+            player: Paddle::new(
+                (SCREEN_WIDTH / 2) as i32,
+                (SCREEN_HEIGHT - (PADDING * 2)) as i32,
+                4,
+            ),
+            opponent: Paddle::new((SCREEN_WIDTH / 2) as i32, 0, 4),
+            ball: Ball::new(
+                (SCREEN_WIDTH / 2) as i32,
+                ((SCREEN_HEIGHT - (PADDING * 2)) / 2) as i32,
+            ),
         }
     }
 
