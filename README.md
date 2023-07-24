@@ -1,6 +1,6 @@
 # Ledger Ping Pong
 
-Demo game for Ledger Nano S
+Demo game for Ledger Nano S/S+
 
 ## Building
 
