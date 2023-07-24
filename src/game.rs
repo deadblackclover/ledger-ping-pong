@@ -30,8 +30,7 @@ impl Game {
         let mut buttons = ButtonsState::new();
 
         let mut draw = |motion: Motion| -> bool {
-            // Clear screen
-            BLANK.paint();
+            ui::clear_screen();
 
             // The player acts
             match motion {
@@ -63,6 +62,8 @@ impl Game {
             // If the paddle can bounce the ball, it bounces
             self.player.kick(&mut self.ball);
             self.opponent.kick(&mut self.ball);
+
+            nanos_ui::screen_util::screen_update();
 
             // Check if the ball touched the edge of the screen
             self.ball.is_game_over()
