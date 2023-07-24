@@ -1,9 +1,8 @@
+use crate::{ball::Ball, paddle::Paddle};
+use core::arch::asm;
 use nanos_sdk::buttons::{ButtonEvent, ButtonsState};
 use nanos_ui::ui;
 use nanos_ui::{bagls::*, PADDING, SCREEN_HEIGHT, SCREEN_WIDTH};
-
-use crate::ball::Ball;
-use crate::paddle::Paddle;
 
 enum Motion {
     Left,
@@ -93,7 +92,19 @@ impl Game {
                     }
                 }
                 Some(ButtonEvent::BothButtonsRelease) => break,
-                Some(_) | None => (),
+                Some(_) | None => {
+                    // Dirty hack
+                    for _ in 0..100_000 {
+                        unsafe {
+                            asm!("nop");
+                        }
+                    }
+
+                    let result = draw(Motion::None);
+                    if result {
+                        break;
+                    }
+                }
             }
         }
     }

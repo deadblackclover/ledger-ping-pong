@@ -1,6 +1,5 @@
-use nanos_ui::{bagls::RectFull, layout::Draw, PADDING, SCREEN_WIDTH};
-
 use crate::ball::Ball;
+use nanos_ui::{bagls::RectFull, layout::Draw, PADDING, SCREEN_WIDTH};
 
 pub struct Paddle {
     x: i32,
