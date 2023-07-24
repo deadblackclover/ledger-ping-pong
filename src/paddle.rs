@@ -1,7 +1,4 @@
-use nanos_ui::{
-    bagls::{RectFull, SendToDisplay},
-    PADDING, SCREEN_WIDTH,
-};
+use nanos_ui::{bagls::RectFull, layout::Draw, PADDING, SCREEN_WIDTH};
 
 use crate::ball::Ball;
 
@@ -65,6 +62,6 @@ impl Paddle {
             .width(self.width)
             .height(self.height)
             .pos(self.x, self.y)
-            .paint();
+            .display();
     }
 }

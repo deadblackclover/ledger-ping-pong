@@ -1,7 +1,4 @@
-use nanos_ui::{
-    bagls::{RectFull, SendToDisplay},
-    PADDING, SCREEN_HEIGHT, SCREEN_WIDTH,
-};
+use nanos_ui::{bagls::RectFull, layout::Draw, PADDING, SCREEN_HEIGHT, SCREEN_WIDTH};
 
 pub struct Ball {
     x: i32,
@@ -69,6 +66,6 @@ impl Ball {
             .width(self.width)
             .height(self.height)
             .pos(self.x, self.y)
-            .paint();
+            .display();
     }
 }
