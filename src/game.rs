@@ -2,7 +2,7 @@ use crate::{ball::Ball, paddle::Paddle};
 use core::arch::asm;
 use nanos_sdk::buttons::{ButtonEvent, ButtonsState};
 use nanos_ui::ui;
-use nanos_ui::{bagls::*, PADDING, SCREEN_HEIGHT, SCREEN_WIDTH};
+use nanos_ui::{PADDING, SCREEN_HEIGHT, SCREEN_WIDTH};
 
 enum Motion {
     Left,

@@ -1,13 +1,13 @@
 [package]
-name = "ledger-game"
+name = "ledger-ping-pong"
 version = "0.1.0"
 authors = ["DEADBLACKCLOVER <deadblackclover@protonmail.com>"]
 description = "Demo game for Ledger Nano"
 edition = "2018"
 license = "GPL-3.0"
 readme = "README.md"
-homepage = "https://github.com/deadblackclover/ledger-game"
-repository = "https://github.com/deadblackclover/ledger-game"
+homepage = "https://github.com/deadblackclover/ledger-ping-pong"
+repository = "https://github.com/deadblackclover/ledger-ping-pong"
 
 [dependencies]
 nanos_sdk = { version = "0.2.1", git = "https://github.com/LedgerHQ/ledger-nanos-sdk.git" }

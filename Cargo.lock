@@ -40,7 +40,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "ledger-game"
+name = "ledger-ping-pong"
 version = "0.1.0"
 dependencies = [
  "nanos_sdk",

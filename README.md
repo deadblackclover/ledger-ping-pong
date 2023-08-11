@@ -1,6 +1,7 @@
 # Ledger Ping Pong
-
 Demo game for Ledger Nano S/S+
+
+![Demo](image.png)
 
 ## Building
 
